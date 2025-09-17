@@ -1,5 +1,4 @@
-import pkg from '@gpt4free/g4f.dev';
-const { G4F } = pkg;
+import { G4F } from '@gpt4free/g4f.dev';
 import type { Messages, StreamingOptions } from './types';
 
 const g4f = new G4F();
