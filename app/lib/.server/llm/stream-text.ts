@@ -1,7 +1,6 @@
-import { G4F } from '@gpt4free/g4f.dev';
+import pkg from '@gpt4free/g4f.dev';
+const { G4F } = pkg;
 import type { Messages, StreamingOptions } from './types';
-
-const g4f = new G4F();
 
 export async function streamText(
   messages: Messages,
@@ -19,7 +18,8 @@ export async function streamText(
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          const response = await g4f.chatCompletion({
+          // Use G4F directly without instantiation
+          const response = await G4F.chatCompletion({
             messages: formattedMessages,
             model: 'gpt-4',
             provider: 'Bing',
