@@ -17,6 +17,10 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
     const result = await streamText(
       [
         {
+          role: 'system',
+          content: 'You are a helpful AI assistant that improves user prompts. Only respond with the improved prompt and nothing else.'
+        },
+        {
           role: 'user',
           content: stripIndents`
           I want you to improve the user prompt that is wrapped in \`<original_prompt>\` tags.
@@ -29,7 +33,7 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
         `,
         },
       ],
-      context.cloudflare.env,
+      context.cloudflare.env
     );
 
     const transformStream = new TransformStream({
