@@ -10,13 +10,10 @@ export interface StreamingOptions {
   onFinish?: (result: { text: string; finishReason: string }) => Promise<void>;
 }
 
-export interface G4FResponse {
-  choices?: Array<{
-    delta?: {
-      content?: string;
-    };
+export interface PuterResponse {
+  result?: {
     message?: {
       content?: string;
     };
-  }>;
+  };
 }
